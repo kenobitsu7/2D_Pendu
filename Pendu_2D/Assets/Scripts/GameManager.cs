@@ -19,6 +19,8 @@ public class GameManager : MonoBehaviour
     private int i = 0;
     [SerializeField] private GameObject GameOver;
 
+
+
     private Score score;
 
     private Sprite initial;
@@ -104,16 +106,33 @@ public class GameManager : MonoBehaviour
 
         foreach (char item in curWord)
         {
-            txt.text += "_";
+            if (item.ToString() == " ")
+            {
+                txt.text += " ";
+            }
+            else if (item.ToString() == "'")
+            {
+                txt.text += "'";
+            }
+            else if (item.ToString() == "-")
+            {
+                txt.text += "-";
+            }
+            else
+            {
+                txt.text += "_";
+            }
         }
+
     }
     IEnumerator Restart()
     {
         yield return new WaitForSeconds(5f);
 
         if (win)
-        {
-           SetWord();
+        {          
+
+           SetWord();                     
            
            GameOver.SetActive(false);
            Pendu.GetComponent<Image>().sprite = initial;
