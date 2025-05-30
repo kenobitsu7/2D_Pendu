@@ -2,14 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+
 public class Score : MonoBehaviour
 {
-    public TextMeshProUGUI txtScore;
-    
+    public TextMeshProUGUI txtScore;  
     private int point = 0;
+
     public int Point
     {
-        get {  return point; }
+        get 
+        { 
+            return point; 
+        }
 
         set
         {

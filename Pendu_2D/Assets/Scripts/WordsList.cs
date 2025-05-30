@@ -8,8 +8,8 @@ public class WordsList
     private List<string> lstWords = new List<string>();
     private List<string> usedWords = new List<string>();
     public string curWord;
-
     private int defaultSize;
+
     public WordsList()
     {
 

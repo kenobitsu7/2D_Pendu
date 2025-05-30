@@ -15,25 +15,23 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Sprite[] sp;
     [SerializeField] private AudioClip SfxCorrect, SfxFailed;
     private AudioSource audiosource;
-    [SerializeField] private GameObject Pendu;
+    [SerializeField] private GameObject pendu;
     private int i = 0;
-    [SerializeField] private GameObject GameOver;
-
-
-
+    [SerializeField] private GameOverScreen gameOver;
     private Score score;
-
     private Sprite initial;
-
     private Button[] btns;
+
+
     private void Awake()
     {  
         audiosource = GetComponent<AudioSource>();
         score = GetComponent<Score>();
-        initial = Pendu.GetComponent<Image>().sprite;
+        initial = pendu.GetComponent<Image>().sprite;
         btns = FindObjectsOfType<Button>();
         SetWord();
     }
+
     public void KeyboardPress(string letter)
     {
         Validation(letter);
@@ -76,23 +74,21 @@ public class GameManager : MonoBehaviour
 
             if (txt.text == curWord)
             {
-                GameOver.SetActive(true);
-                GameOver.GetComponentInChildren<TextMeshProUGUI>().text = "Félicitations ! Vous avez trouvé le mot " + curWord;
+                gameOver.SetGameOverScreen(win,curWord,Continue);      
                 score.Point++;
-                StartCoroutine(Restart());
+                
             }
         }
         else
         {
-            Pendu.GetComponent<Image>().sprite = sp[i];
+            pendu.GetComponent<Image>().sprite = sp[i];
             i++;
             audiosource.PlayOneShot(SfxFailed);
 
             if(i==6)
             {
-                GameOver.SetActive(true);
-                GameOver.GetComponentInChildren<TextMeshProUGUI>().text = "Dommage ! Vous n'avez pas trouvé le mot " + curWord;
-                StartCoroutine(Restart());
+                gameOver.SetGameOverScreen(win,curWord);           
+                
             }
         }
     }
@@ -125,35 +121,23 @@ public class GameManager : MonoBehaviour
         }
 
     }
-    IEnumerator Restart()
-    {
-        yield return new WaitForSeconds(5f);
 
-        if (win)
-        {          
-
-           SetWord();                     
-           
-           GameOver.SetActive(false);
-           Pendu.GetComponent<Image>().sprite = initial;
-           BtnInteractableOn();
-           i = 0;
-
-        }
-        else
-        {
-            UnityEngine.SceneManagement.SceneManager.LoadScene("Game");
-        }
+    private void Continue ()
+    {               
+        SetWord();                                 
+        pendu.GetComponent<Image>().sprite = initial;
+        BtnInteractableOn();
+        i = 0;
     }
 
     void BtnInteractableOn()
-    {
-        
+    {        
         foreach (var item in btns)
         {
             item.interactable = true;
         }
     }
+    
 }
         
     
