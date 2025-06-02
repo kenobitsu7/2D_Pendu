@@ -12,6 +12,9 @@ public class GameOverScreen : MonoBehaviour
     [SerializeField] private Button button;
     [SerializeField] private TextMeshProUGUI buttonText;
 
+
+    // Gestion des conditions de victoire ou defaite dans le Game Over
+
     public void SetGameOverScreen(bool win,string curWord,Action action=null)
     {
         gameObject.SetActive(true);
@@ -19,14 +22,14 @@ public class GameOverScreen : MonoBehaviour
         if (win) 
         { 
             sentence.text= "Félicitations ! Vous avez trouvé le mot " + curWord;
-            // button set to continue
+            // Active le button "Continue"
             buttonText.text = "Continue";
             button.onClick.AddListener(() => { action(); gameObject.SetActive(false); });
         }
         else
         {
             sentence.text = "Dommage ! Vous n'avez pas trouvé le mot " + curWord;
-            // button set to restart
+            // Active le button "Restart"
             buttonText.text = "Restart";
             button.onClick.AddListener(()=>RestartButton());
         }

@@ -32,6 +32,8 @@ public class GameManager : MonoBehaviour
         SetWord();
     }
 
+    // Validation des lettres du mot de la liste
+
     public void KeyboardPress(string letter)
     {
         Validation(letter);
@@ -66,6 +68,8 @@ public class GameManager : MonoBehaviour
         Verification();
     }
 
+    // Verification du mot de la liste et des conditions de victoire ou defaite
+
     void Verification()
     {
         if (win)
@@ -75,8 +79,7 @@ public class GameManager : MonoBehaviour
             if (txt.text == curWord)
             {
                 gameOver.SetGameOverScreen(win,curWord,Continue);      
-                score.Point++;
-                
+                score.Point++;           
             }
         }
         else
@@ -87,8 +90,7 @@ public class GameManager : MonoBehaviour
 
             if(i==6)
             {
-                gameOver.SetGameOverScreen(win,curWord);           
-                
+                gameOver.SetGameOverScreen(win,curWord);                        
             }
         }
     }
@@ -98,7 +100,7 @@ public class GameManager : MonoBehaviour
         curWord = word.GetWord();
         txt.text = "";
 
-        // Genere le nombre de caractere "_" 
+        // Genere les caracteres du mot de la liste
 
         foreach (char item in curWord)
         {
@@ -122,7 +124,7 @@ public class GameManager : MonoBehaviour
 
     }
 
-    private void Continue ()
+    private void Continue()
     {               
         SetWord();                                 
         pendu.GetComponent<Image>().sprite = initial;

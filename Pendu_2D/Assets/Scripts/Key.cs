@@ -14,6 +14,9 @@ public class Key : MonoBehaviour
     {
         gameManager = FindFirstObjectByType<GameManager>();
     }
+
+    // Gestion des touches du clavier virtuel
+
     void Start()
     {
         button = GetComponent<Button>();

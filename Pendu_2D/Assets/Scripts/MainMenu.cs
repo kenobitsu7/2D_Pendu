@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+
+    // Gestion des buttons du Menu Principal 
+
     public void ExitButton()
     {
         Application.Quit();

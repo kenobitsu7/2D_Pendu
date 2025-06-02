@@ -10,6 +10,9 @@ public class WordsList
     public string curWord;
     private int defaultSize;
 
+
+    // Gestion du tirage de mots dans la liste
+
     public WordsList()
     {
 

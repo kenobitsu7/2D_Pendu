@@ -8,6 +8,9 @@ public class Score : MonoBehaviour
     public TextMeshProUGUI txtScore;  
     private int point = 0;
 
+
+    // Gestion du Score 
+
     public int Point
     {
         get 

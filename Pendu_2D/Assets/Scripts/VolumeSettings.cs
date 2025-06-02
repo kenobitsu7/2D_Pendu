@@ -8,6 +8,9 @@ public class VolumeSettings : MonoBehaviour
     [SerializeField] private Slider musicSlider;
     [SerializeField] private Slider SFXSlider;
 
+    
+    // Gestion de la musique et des bruitages de l'Audio Mixer avec sliders
+
     private void Start()
     {
 
