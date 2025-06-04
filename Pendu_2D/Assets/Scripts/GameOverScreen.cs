@@ -22,14 +22,14 @@ public class GameOverScreen : MonoBehaviour
         if (win) 
         { 
             sentence.text= "Félicitations ! Vous avez trouvé le mot " + curWord;
-            // Active le button "Continue"
+            // Active le "Continue"
             buttonText.text = "Continue";
             button.onClick.AddListener(() => { action(); gameObject.SetActive(false); });
         }
         else
         {
             sentence.text = "Dommage ! Vous n'avez pas trouvé le mot " + curWord;
-            // Active le button "Restart"
+            // Active le "Restart"
             buttonText.text = "Restart";
             button.onClick.AddListener(()=>RestartButton());
         }
