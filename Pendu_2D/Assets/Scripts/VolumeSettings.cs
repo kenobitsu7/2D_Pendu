@@ -13,10 +13,11 @@ public class VolumeSettings : MonoBehaviour
 
     private void Start()
     {
-
+        
         musicSlider.onValueChanged.AddListener((value) => SetVolume(value, "VolumeMusic", "musicVolume"));
         SFXSlider.onValueChanged.AddListener((value) => SetVolume(value, "VolumeSFX", "SFXVolume"));
 
+        // Verifie si une cle de donnees existe deja
         if (PlayerPrefs.HasKey("musicVolume"))
         {
             LoadVolume();
@@ -55,10 +56,14 @@ public class VolumeSettings : MonoBehaviour
 
     private void LoadVolume()
     {
+        // Recupere la derniere valeur sauvegardee du volume de la musique lorsque le joueur quitte le jeu
         musicSlider.value = PlayerPrefs.GetFloat("musicVolume");
+        // Recupere la derniere valeur sauvegardee du volume des bruits lorsque le joueur quitte le jeu
         SFXSlider.value = PlayerPrefs.GetFloat("SFXVolume");
 
+        // Charge la derniere valeur du volume de la musique lorsque le joueur retourne dans le jeu
         SetVolume(musicSlider.value, "VolumeMusic", "musicVolume");
+        // Charge la derniere valeur du volume des bruits lorsque le joueur retourne dans le jeu
         SetVolume(SFXSlider.value, "VolumeSFX", "SFXVolume");
     }
 }

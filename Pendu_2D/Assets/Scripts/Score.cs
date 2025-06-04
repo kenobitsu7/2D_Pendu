@@ -18,6 +18,8 @@ public class Score : MonoBehaviour
             return point; 
         }
 
+        // Met a jour le champ texte du Score
+
         set
         {
             point = value;

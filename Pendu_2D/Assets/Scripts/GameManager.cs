@@ -25,10 +25,15 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {  
+        // Initialise l'Audio Source
         audiosource = GetComponent<AudioSource>();
+        // Initialise le Score
         score = GetComponent<Score>();
+        // Initialise l'image initiale du Pendu
         initial = pendu.GetComponent<Image>().sprite;
+        // Initialise tous les Boutons
         btns = FindObjectsOfType<Button>();
+        // Initialise la fonction SetWord a l'appel de procedure
         SetWord();
     }
 
@@ -78,7 +83,8 @@ public class GameManager : MonoBehaviour
 
             if (txt.text == curWord)
             {
-                gameOver.SetGameOverScreen(win,curWord,Continue);      
+                gameOver.SetGameOverScreen(win,curWord,Continue);
+                // Incremente le Score de 1 
                 score.Point++;           
             }
         }
@@ -133,7 +139,8 @@ public class GameManager : MonoBehaviour
     }
 
     void BtnInteractableOn()
-    {        
+    {    
+        // Redefinit tous les Boutons 
         foreach (var item in btns)
         {
             item.interactable = true;
