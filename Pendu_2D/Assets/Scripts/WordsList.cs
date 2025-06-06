@@ -13,7 +13,7 @@ public class WordsList
 
     // Gestion du tirage de mots dans la liste
 
-    public WordsList()
+    public WordsList() // Constructeur
     {
 
         lstWords.Add("GAIN");
@@ -22,6 +22,7 @@ public class WordsList
         lstWords.Add("SUCCES");
         lstWords.Add("CHEF D'OEUVRE");
         lstWords.Add("SANS-FAUTE");
+        // Recupere la taille de la liste
         defaultSize = lstWords.Count;
 
     }
